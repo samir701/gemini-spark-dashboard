@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gemini Spark | Job Match Portal — 2026-11-14</title>
+  <style>
+    :root { --bg:#f8fafc; --surface:#ffffff; --border:#e2e8f0; --text:#0f172a; --muted:#64748b; --primary:#4f46e5; --primary-dark:#4338ca; --emerald-bg:#ecfdf5; --emerald-border:#a7f3d0; --emerald-text:#065f46; --rose-bg:#fff1f2; --rose-border:#fecdd3; --rose-text:#9f1239; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; background:var(--bg); color:var(--text); line-height:1.5; min-height:100vh; }
+    .container { max-width:1240px; margin:0 auto; padding:0 20px; }
+    header { background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 55%,#0f172a 100%); color:#fff; border-bottom:1px solid #1e293b; padding:24px 0; }
+    .header-inner { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:20px; }
+    .brand-row { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+    .brand-icon { width:38px; height:38px; border-radius:10px; background:rgba(99,102,241,0.22); border:1px solid rgba(129,140,248,0.4); color:#a5b4fc; display:inline-flex; align-items:center; justify-content:center; font-size:18px; font-weight:700; }
+    h1 { font-size:24px; font-weight:800; letter-spacing:-0.02em; }
+    .schedule-badge { display:inline-flex; align-items:center; gap:6px; padding:4px 10px; border-radius:999px; font-size:12px; font-weight:600; background:rgba(245,158,11,0.16); color:#fcd34d; border:1px solid rgba(251,191,36,0.35); }
+    .schedule-dot { width:7px; height:7px; border-radius:50%; background:#fbbf24; }
+    .subtitle { color:#cbd5e1; font-size:13px; margin-top:6px; }
+    .profile-box { display:grid; grid-template-columns:repeat(4,minmax(110px,1fr)); gap:14px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:12px 16px; font-size:12px; }
+    .profile-label { color:#94a3b8; font-size:10px; text-transform:uppercase; letter-spacing:0.05em; }
+    .profile-val { color:#fff; font-weight:600; margin-top:2px; }
+    main { padding:24px 0 48px; display:flex; flex-direction:column; gap:20px; }
+    .kpi-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:12px; }
+    .card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:16px; box-shadow:0 1px 2px rgba(15,23,42,0.04); }
+    .kpi-card.top5 { background:#fffbeb; border-color:#fde68a; }
+    .kpi-title { font-size:12px; font-weight:500; color:var(--muted); }
+    .kpi-value { font-size:26px; font-weight:800; margin-top:4px; color:var(--text); }
+    .kpi-sub { font-size:11px; color:#94a3b8; margin-top:2px; }
+    .analytics-grid { display:grid; grid-template-columns:1fr 2fr; gap:16px; }
+    .section-title { font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; color:var(--text); }
+    .tag-list { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
+    .tag { display:inline-block; padding:3px 8px; border-radius:6px; font-size:11px; font-weight:600; border:1px solid; }
+    .tag-green { background:var(--emerald-bg); color:var(--emerald-text); border-color:var(--emerald-border); }
+    .tag-red { background:var(--rose-bg); color:var(--rose-text); border-color:var(--rose-border); }
+    .charts-pair { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .bar-row { display:flex; align-items:center; gap:10px; margin-top:10px; font-size:12px; }
+    .bar-label { width:82px; font-weight:600; color:#334155; }
+    .bar-track { flex:1; height:14px; background:#f1f5f9; border-radius:999px; overflow:hidden; }
+    .bar-fill { height:100%; border-radius:999px; }
+    .bar-count { width:28px; text-align:right; font-weight:700; color:#0f172a; }
+    .filter-top { display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+    .search-wrap { flex:1; min-width:220px; position:relative; }
+    .search-input { width:100%; padding:9px 12px 9px 34px; font-size:13px; border:1px solid #cbd5e1; border-radius:8px; outline:none; }
+    .search-input:focus, select:focus { border-color:var(--primary); box-shadow:0 0 0 2px rgba(79,70,229,0.15); }
+    .search-icon { position:absolute; left:11px; top:10px; width:15px; height:15px; color:#94a3b8; }
+    select { padding:8px 10px; font-size:13px; border:1px solid #cbd5e1; border-radius:8px; background:#fff; color:var(--text); outline:none; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; padding:8px 14px; border-radius:8px; font-size:12px; font-weight:600; text-decoration:none; cursor:pointer; border:1px solid transparent; transition:0.15s; }
+    .btn-secondary { background:#f1f5f9; color:#334155; border-color:#e2e8f0; }
+    .btn-secondary:hover { background:#e2e8f0; }
+    .btn-primary { background:var(--primary); color:#fff; }
+    .btn-primary:hover { background:var(--primary-dark); }
+    .filter-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin-top:12px; }
+    .filter-meta { display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px; margin-top:12px; padding-top:10px; border-top:1px solid #f1f5f9; font-size:12px; color:var(--muted); }
+    .jobs-list { display:flex; flex-direction:column; gap:14px; }
+    .job-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:20px; box-shadow:0 1px 2px rgba(15,23,42,0.04); }
+    .job-card.top5 { border-color:#fcd34d; box-shadow:0 0 0 1px rgba(251,191,36,0.35),0 2px 6px rgba(15,23,42,0.04); }
+    .job-header { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-start; gap:14px; }
+    .badges { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:6px; }
+    .rank-badge { padding:2px 8px; border-radius:6px; font-size:12px; font-weight:700; background:#f1f5f9; color:#334155; }
+    .job-card.top5 .rank-badge { background:#fef3c7; color:#92400e; }
+    .score-badge { padding:2px 10px; border-radius:999px; font-size:12px; font-weight:700; border:1px solid; }
+    .score-excellent { background:#d1fae5; color:#065f46; border-color:#6ee7b7; }
+    .score-strong { background:#ccfbf1; color:#115e59; border-color:#5eead4; }
+    .score-good { background:#e0e7ff; color:#3730a3; border-color:#a5b4fc; }
+    .score-potential { background:#fef3c7; color:#92400e; border-color:#fcd34d; }
+    .score-low { background:#f1f5f9; color:#475569; border-color:#cbd5e1; }
+    .job-source { font-size:12px; color:#94a3b8; }
+    .job-title { font-size:18px; font-weight:700; color:var(--text); }
+    .job-company { font-size:14px; font-weight:600; color:var(--primary); margin-top:2px; }
+    .job-actions { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+    .meta-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:14px; padding-top:12px; border-top:1px solid #f1f5f9; font-size:12px; }
+    .meta-label { color:#94a3b8; display:block; font-size:11px; }
+    .meta-val { font-weight:600; color:#1e293b; }
+    .skills-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:14px; }
+    .skill-box { padding:12px; border-radius:8px; border:1px solid; font-size:12px; }
+    .skill-box.matched { background:#ecfdf5; border-color:#a7f3d0; }
+    .skill-box.missing { background:#fff1f2; border-color:#fecdd3; }
+    .skill-box-title { font-weight:700; margin-bottom:6px; }
+    .notes-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px; font-size:12px; color:#475569; }
+    @media (max-width:1024px) { .kpi-grid{grid-template-columns:repeat(3,1fr);} .analytics-grid{grid-template-columns:1fr;} .profile-box{grid-template-columns:repeat(2,1fr);} }
+    @media (max-width:700px) { .kpi-grid{grid-template-columns:repeat(2,1fr);} .filter-grid{grid-template-columns:1fr 1fr;} .charts-pair,.skills-grid,.notes-grid,.meta-grid{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-inner">
+      <div>
+        <div class="brand-row">
+          <span class="brand-icon">✦</span>
+          <h1>Gemini Spark | Job Match Portal</h1>
+          <span class="schedule-badge"><span class="schedule-dot"></span> Schedule Not Configured</span>
+        </div>
+        <p class="subtitle">AI-powered daily job discovery and matching • Run Date: <strong>2026-11-14</strong></p>
+      </div>
+      <div class="profile-box">
+        <div><div class="profile-label">Candidate</div><div class="profile-val">Samir Brahma</div></div>
+        <div><div class="profile-label">Target Profile</div><div class="profile-val">DS / AI / GenAI Eng</div></div>
+        <div><div class="profile-label">Exp &amp; Salary</div><div class="profile-val">3–5 Yrs • ₹15–25 LPA+</div></div>
+        <div><div class="profile-label">Locations</div><div class="profile-val">HYD / BLR / Pune / Remote</div></div>
+      </div>
+    </div>
+  </header>
+  <main class="container">
+    <section class="kpi-grid">
+      <div class="card"><div class="kpi-title">Total Jobs Discovered</div><div class="kpi-value">27</div><div class="kpi-sub">Across 4 sources</div></div>
+      <div class="card"><div class="kpi-title">Relevant Jobs</div><div class="kpi-value">27</div><div class="kpi-sub">After deduplication</div></div>
+      <div class="card"><div class="kpi-title">Top 25 Matches</div><div class="kpi-value" style="color:#4f46e5;">25</div><div class="kpi-sub">Ranked opportunities</div></div>
+      <div class="card"><div class="kpi-title">Top Match Score</div><div class="kpi-value" style="color:#059669;">90%</div><div class="kpi-sub">Quora (New Grad)</div></div>
+      <div class="card"><div class="kpi-title">Average Match Score</div><div class="kpi-value">70.2%</div><div class="kpi-sub">Across Top 25</div></div>
+      <div class="card kpi-card top5"><div class="kpi-title" style="color:#92400e;">Top 5 Recommendations</div><div class="kpi-value" style="color:#b45309;">5</div><div class="kpi-sub" style="color:#d97706;">Priority applications</div></div>
+    </section>
+    <section class="analytics-grid">
+      <div class="card">
+        <div class="section-title">Resume Alignment Snapshot</div>
+        <p style="font-size:12px;color:#64748b;margin-top:4px;">Active Resume: <strong>samir-brahma-resume-ai-data.pdf</strong> (~6 mos web dev + B.Tech AIML)</p>
+        <div style="margin-top:12px;"><div style="font-size:12px;font-weight:700;color:#065f46;">Core Strengths Evidenced</div><div class="tag-list"><span class="tag tag-green">Python</span><span class="tag tag-green">SQL (MySQL)</span><span class="tag tag-green">PyTorch</span><span class="tag tag-green">DistilBERT</span><span class="tag tag-green">CNNs</span><span class="tag tag-green">Selenium</span><span class="tag tag-green">APIs</span></div></div>
+        <div style="margin-top:12px;"><div style="font-size:12px;font-weight:700;color:#9f1239;">Top Market Skill Gaps</div><div class="tag-list"><span class="tag tag-red">RAG</span><span class="tag tag-red">LangChain / LangGraph</span><span class="tag tag-red">Vector DBs</span><span class="tag tag-red">Azure / AWS / GCP</span><span class="tag tag-red">Docker / K8s</span></div></div>
+      </div>
+      <div class="card charts-pair">
+        <div><div class="section-title">Match Score Distribution</div><div id="scoreBars" style="margin-top:10px;"></div></div>
+        <div><div class="section-title">Jobs by Preferred Location</div><div id="locationBars" style="margin-top:10px;"></div></div>
+      </div>
+    </section>
+    <section class="card">
+      <div class="filter-top">
+        <div class="search-wrap">
+          <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+          <input id="searchInput" class="search-input" type="text" placeholder="Search by job title, company, skills, or location..." />
+        </div>
+        <label for="sortSelect" style="font-size:12px;font-weight:600;color:#475569;">Sort by:</label>
+        <select id="sortSelect"><option value="score-desc">Match Score (Highest First)</option><option value="posted-desc">Job Posted Date</option><option value="company-asc">Company (A–Z)</option><option value="title-asc">Job Title (A–Z)</option><option value="location-asc">Location (A–Z)</option><option value="salary-desc">Salary (Disclosed First)</option></select>
+        <button id="resetBtn" type="button" class="btn btn-secondary">Reset</button>
+      </div>
+      <div class="filter-grid">
+        <select id="locationFilter"><option value="all">All Locations</option><option value="Hyderabad">Hyderabad</option><option value="Bengaluru">Bangalore / Bengaluru</option><option value="Pune">Pune</option><option value="Remote">Remote</option><option value="Other">Other</option></select>
+        <select id="roleFilter"><option value="all">All Roles</option><option value="Data Scientist">Data Scientist</option><option value="AI Engineer">AI Engineer</option><option value="GenAI Engineer">GenAI Engineer</option><option value="ML Engineer">ML Engineer</option><option value="LLM Engineer">LLM Engineer</option><option value="Agentic AI Engineer">Agentic AI Engineer</option><option value="Other">Other</option></select>
+        <select id="scoreFilter"><option value="all">All Match Scores</option><option value="90-100">90–100% (Excellent)</option><option value="80-89">80–89% (Strong)</option><option value="70-79">70–79% (Good)</option><option value="below-70">Below 70%</option></select>
+        <select id="modeFilter"><option value="all">All Work Modes</option><option value="Remote">Remote</option><option value="Hybrid">Hybrid</option><option value="Onsite">Onsite</option></select>
+        <select id="statusFilter"><option value="all">All Statuses</option><option value="New Match">New Match</option><option value="Saved">Saved</option><option value="Applied">Applied</option><option value="Interview Scheduled">Interview Scheduled</option><option value="Interview Completed">Interview Completed</option><option value="Rejected">Rejected</option><option value="Offer">Offer</option></select>
+      </div>
+      <div class="filter-meta"><span id="resultsCount">Showing 25 of 25 jobs</span><span id="statusSummary"></span></div>
+    </section>
+    <section id="jobsContainer" class="jobs-list"></section>
+  </main>
+  <script>
+    const JOBS_DATA = [
+      { id: 1, rank: 1, score: 90, company: "Quora", title: "Machine Learning Engineer, New Grad", roleCategory: "ML Engineer", location: "Remote", workMode: "Remote", experience: "New Grad (0–1 Yrs)", salary: "Not disclosed.", salaryNum: 0, postedDate: "Active", source: "Company Portal (Ashby)", matchedSkills: ["Python", "ML Models", "NLP / AI Systems"], missingSkills: ["LLM-powered agents", "Agentic workflows (production)"], whyMatches: "New Grad ML Engineer role directly aligned with your AI/ML background, Python, and NLP projects.", concerns: "Competitive global remote bar; production agentic workflow experience not yet demonstrated.", originalUrl: "https://jobs.ashbyhq.com/quora/40659fe7-545e-4b08-b6d7-2567b18b9ed3", applyUrl: "https://jobs.ashbyhq.com/quora/40659fe7-545e-4b08-b6d7-2567b18b9ed3" },
+      { id: 2, rank: 2, score: 88, company: "AltOps", title: "AI Engineer", roleCategory: "AI Engineer", location: "Remote", workMode: "Remote", experience: "2023–2026 Batch (0–3 Yrs)", salary: "₹25–40 LPA", salaryNum: 32.5, postedDate: "2026-11-10", source: "HireDoor", matchedSkills: ["Python", "Workflow Automation", "API Integration", "AI Modules"], missingSkills: ["Production AI Agent Frameworks"], whyMatches: "Remote role open to 2023–2026 batches building AI workflow automation, exceeding your ₹15–25 LPA+ goal.", concerns: "High compensation band expects strong independent system design.", originalUrl: "https://hiredoor.in/jobs/ai-engineer-e53ded", applyUrl: "https://hiredoor.in/jobs/ai-engineer-e53ded" },
+      { id: 3, rank: 3, score: 84, company: "Meraki-Labs (Fermi)", title: "AI Engineer", roleCategory: "AI Engineer", location: "Bengaluru", workMode: "Onsite", experience: "Early-stage / Startup", salary: "Not disclosed.", salaryNum: 0, postedDate: "Active", source: "Company Portal (Ashby)", matchedSkills: ["Python", "Full-Stack AI Integration", "Rapid Prototyping"], missingSkills: ["Production Agentic Tutoring", "Observability"], whyMatches: "Bengaluru startup building AI tutoring workflows; aligns with your Mediassist+ AI app experience.", concerns: "High-velocity startup expects production-grade agentic workflow hardening.", originalUrl: "https://jobs.ashbyhq.com/Meraki-Labs/958edd0a-edca-4da9-b65e-2aac4c6564fe", applyUrl: "https://jobs.ashbyhq.com/Meraki-Labs/958edd0a-edca-4da9-b65e-2aac4c6564fe" },
+      { id: 4, rank: 4, score: 82, company: "Omnireach", title: "Junior AI & Data Engineer", roleCategory: "AI Engineer", location: "Remote", workMode: "Remote", experience: "0–1 Yrs", salary: "₹7–12 LPA", salaryNum: 9.5, postedDate: "2026-01-07", source: "Naukri", matchedSkills: ["Python", "SQL", "Data Pipelines", "ML Basics"], missingSkills: ["Enterprise Cloud Data Engineering"], whyMatches: "Entry-level 0–1 yr remote AI & Data role matching your Python, SQL, and data scraping pipelines.", concerns: "Salary (₹7–12 LPA) below ₹15–25 LPA+ target; older posting date.", originalUrl: "https://www.naukri.com/job-listings-junior-ai-data-engineer-omnireach-remote-0-to-1-years-070126500553", applyUrl: "https://www.naukri.com/job-listings-junior-ai-data-engineer-omnireach-remote-0-to-1-years-070126500553" },
+      { id: 5, rank: 5, score: 81, company: "Suzega", title: "AI Engineer", roleCategory: "AI Engineer", location: "Remote", workMode: "Remote", experience: "1–3 Yrs", salary: "Not disclosed.", salaryNum: 0, postedDate: "2026-10-29", source: "Naukri", matchedSkills: ["Python", "SQL", "ML & Data Pipelines"], missingSkills: ["AWS / Azure", "Docker"], whyMatches: "Remote AI Engineer role focused on Python, SQL, and scalable ML data pipelines.", concerns: "Requests 1–3 yrs experience vs. ~6 months formal work experience.", originalUrl: "https://www.naukri.com/job-listings-ai-engineer-suzega-remote-1-to-3-years-291026018686", applyUrl: "https://www.naukri.com/job-listings-ai-engineer-suzega-remote-1-to-3-years-291026018686" },
+      { id: 6, rank: 6, score: 79, company: "saralx", title: "AI Engineer", roleCategory: "AI Engineer", location: "Bengaluru", workMode: "Not disclosed", experience: "1–4 Yrs", salary: "Not disclosed.", salaryNum: 0, postedDate: "2026-10-31", source: "Naukri", matchedSkills: ["Python", "ML", "Deep Learning", "NLP", "Computer Vision (CNNs)"], missingSkills: ["TensorFlow / Keras", "OpenCV"], whyMatches: "Bengaluru AI role spanning NLP & Computer Vision, matching your DistilBERT and CNN projects.", concerns: "Requests 1–4 yrs experience; TensorFlow listed vs. PyTorch in resume.", originalUrl: "https://www.naukri.com/job-listings-311026501645", applyUrl: "https://www.naukri.com/job-listings-311026501645" },
+      { id: 7, rank: 7, score: 79, company: "Naukri Listing (HYD/Pune/BLR)", title: "Artificial Intelligence Engineer", roleCategory: "AI Engineer", location: "Hyderabad, Pune, Bengaluru", workMode: "Hybrid", experience: "0–2 Yrs", salary: "₹3.25–7.5 LPA", salaryNum: 5.4, postedDate: "2026-10-28", source: "Naukri", matchedSkills: ["Machine Learning", "SQL", "Analytics", "Data Analysis"], missingSkills: ["None among core listed skills"], whyMatches: "Entry-level 0–2 yr hybrid role across all 3 preferred Indian tech hubs.", concerns: "Disclosed salary (₹3.25–7.5 LPA) is well below ₹15–25 LPA+ target.", originalUrl: "https://www.naukri.com/job-listings-artificial-intelligence-engineer-hyderabad-0-to-5-years-281026914911", applyUrl: "https://www.naukri.com/job-listings-artificial-intelligence-engineer-hyderabad-0-to-5-years-281026914911" },
+      { id: 8, rank: 8, score: 78, company: "Sasken Technologies", title: "Gen AI Engineer", roleCategory: "GenAI Engineer", location: "Hyderabad", workMode: "Not disclosed", experience: "1–3 Yrs", salary: "Not disclosed.", salaryNum: 0, postedDate: "2026-10-30", source: "Naukri", matchedSkills: ["Python", "Rapid AI / NLP Prototyping"], missingSkills: ["RAG", "GenAI Frameworks", "AWS Bedrock / SageMaker"], whyMatches: "Hyderabad GenAI Engineer role (1–3 yrs) focused on rapid POCs and Python prototyping.", concerns: "RAG and AWS Bedrock/SageMaker not demonstrated in resume.", originalUrl: "https://www.naukri.com/job-listings-gen-ai-engineer-sasken-technologies-hyderabad-1-to-3-years-301026010405", applyUrl: "https://www.naukri.com/job-listings-gen-ai-engineer-sasken-technologies-hyderabad-1-to-3-years-301026010405" },
+      { id: 9, rank: 9, score: 77, company: "Infosys", title: "Digital Specialist Engineer (Trainee)", roleCategory: "AI Engineer", location: "Hyderabad, Bengaluru", workMode: "Hybrid", experience: "0–2 Yrs", salary: "Not disclosed.", salaryNum: 0, postedDate: "2026-10-15", source: "Naukri", matchedSkills: ["Full-Stack Development", "Java", "AI / ML Fundamentals"], missingSkills: ["Scala", "Big Data"], whyMatches: "0–2 yr trainee role in Hyderabad/Bengaluru combining full-stack and GenAI exposure.", concerns: "Generalist software/big-data track rather than pure AI/ML.", originalUrl: "https://www.naukri.com/job-listings-digital-specialist-engineer-trainee-infosys-hyderabad-bengaluru-delhi-ncr-0-to-2-years-151026022319", applyUrl: "https://www.naukri.com/job-listings-digital-specialist-engineer-trainee-infosys-hyderabad-bengaluru-delhi-ncr-0-to-2-years-151026022319" },
+      { id: 10, rank: 10, score: 76, company: "Infosys", title: "AI ML Engineer 2026", roleCategory: "ML Engineer", location: "Bengaluru", workMode: "Not disclosed", experience: "1–3 Yrs", salary: "Not disclosed.", salaryNum: 0, postedDate: "2026-10-22", source: "Naukri", matchedSkills: ["Python", "ML Model Building", "Data Analysis", "Automation"], missingSkills: ["Production MLOps"], whyMatches: "1–3 yr Bengaluru role focused on ML model optimization and AI automation.", concerns: "1–3 yrs experience preference vs. ~6 months formal experience.", originalUrl: "https://www.naukri.com/job-listings-ai-ml-engineer-2026-infosys-chennai-bengaluru-1-to-3-years-221026035328", applyUrl: "https://www.naukri.com/job-listings-ai-ml-engineer-2026-infosys-chennai-bengaluru-1-to-3-years-221026035328" },
+      { id: 11, rank: 11, score: 74, company: "Naukri Listing (BLR/Chennai)", title: "Machine Learning Engineer", roleCategory: "ML Engineer", location: "Bengaluru", workMode: "Not disclosed", experience: "1–4 Yrs", salary: "Not disclosed.", salaryNum: 0, postedDate: "2026-10-23", source: "Naukri", matchedSkills: ["Python", "SQL"], missingSkills: ["LLM", "RAG", "Prompt Engineering", "LangChain", "LangGraph"], whyMatches: "Bengaluru ML Engineer role (1–4 yrs) with strong GenAI/LLM stack alignment.", concerns: "Missing RAG, LangChain, and LangGraph experience.", originalUrl: "https://www.naukri.com/job-listings-machine-learning-engineer-chennai-bengaluru-1-to-4-years-231026925019", applyUrl: "https://www.naukri.com/job-listings-machine-learning-engineer-chennai-bengaluru-1-to-4-years-231026925019" },
+      { id: 12, rank: 12, score: 72, company: "Naukri Listing (Pune/BLR)", title: "Machine Learning Scientist", roleCategory: "ML Engineer", location: "Hyderabad, Pune, Bengaluru", workMode: "Hybrid", experience: "1–4 Yrs", salary: "Not disclosed.", salaryNum: 0, postedDate: "2026-10-09", source: "Naukri", matchedSkills: ["Python", "ML", "Deep Learning"], missingSkills: ["AWS", "Data Engineering", "Production GenAI"], whyMatches: "Hybrid ML Scientist role across Hyderabad, Pune, and Bengaluru.", concerns: "AWS cloud and enterprise data engineering not demonstrated.", originalUrl: "https://www.naukri.com/job-listings-machine-learning-scientist-noida-mumbai-pune-gurugram-bengaluru-1-to-4-years-091026926694", applyUrl: "https://www.naukri.com/job-listings-machine-learning-scientist-noida-mumbai-pune-gurugram-bengaluru-1-to-4-years-091026926694" },
+      { id: 13, rank: 13, score: 69, company: "HR Central", title: "Data Scientist (2–5 Years)", roleCategory: "Data Scientist", location: "Bengaluru", workMode: "Not disclosed", experience: "2–5 Yrs", salary: "Not disclosed.", salaryNum: 0, postedDate: "2026-10-24", source: "Naukri", matchedSkills: ["Python", "NumPy", "Pandas", "Matplotlib", "Seaborn", "PyTorch"], missingSkills: ["Time Series (ARIMA, XGBoost)", "Scikit-learn"], whyMatches: "Bengaluru Data Scientist role matching your Python data science and visualization stack.", concerns: "2–5 yrs experience gap; time-series forecasting not in resume.", originalUrl: "https://www.naukri.com/job-listings-data-scientist-2-5-years-experience-hr-central-bengaluru-2-to-5-years-231026015380?src=companyPageJobsMob&sid=17933337612846400&xp=1&px=1", applyUrl: "https://www.naukri.com/job-listings-data-scientist-2-5-years-experience-hr-central-bengaluru-2-to-5-years-231026015380?src=companyPageJobsMob&sid=17933337612846400&xp=1&px=1" },
+      { id: 14, rank: 14, score: 68, company: "Infosys", title: "AI/ML Engineer (BLR/HYD)", roleCategory: "ML Engineer", location: "Hyderabad, Bengaluru", workMode: "Not disclosed", experience: "2–5 Yrs", salary: "Not disclosed.", salaryNum: 0, postedDate: "2026-11-04", source: "Naukri", matchedSkills: ["Python", "NumPy", "Pandas", "PyTorch", "NLP", "SQL / NoSQL"], missingSkills: ["LLMs", "RAG", "Vector DBs", "LangChain", "Azure/AWS/GCP", "Docker/K8s"], whyMatches: "Hyderabad/Bengaluru AI/ML role with strong core Python, PyTorch, and SQL/MongoDB overlap.", concerns: "2–5 yrs experience gap and missing RAG/Cloud/Docker skills.", originalUrl: "https://www.naukri.com/job-listings-ai-ml-infosys-hyderabad-chennai-bengaluru-2-to-5-years-041126025665", applyUrl: "https://www.naukri.com/job-listings-ai-ml-infosys-hyderabad-chennai-bengaluru-2-to-5-years-041126025665" },
+      { id: 15, rank: 15, score: 67, company: "Infosys", title: "AI/ML Engineer (Pune)", roleCategory: "ML Engineer", location: "Pune", workMode: "Not disclosed", experience: "2–5 Yrs", salary: "Not disclosed.", salaryNum: 0, postedDate: "2026-11-04", source: "Naukri", matchedSkills: ["Python", "PyTorch", "NLP (DistilBERT)", "SQL / NoSQL"], missingSkills: ["LLMs", "LangChain", "MLOps", "Azure/AWS/GCP"], whyMatches: "Pune AI/ML role covering NLP summarization and classification, similar to your DistilBERT project.", concerns: "2–5 yrs experience gap and missing MLOps/cloud.", originalUrl: "https://www.naukri.com/job-listings-ai-ml-infosys-pune-delhi-ncr-mumbai-all-areas-2-to-5-years-041126025686", applyUrl: "https://www.naukri.com/job-listings-ai-ml-infosys-pune-delhi-ncr-mumbai-all-areas-2-to-5-years-041126025686" },
+      { id: 16, rank: 16, score: 66, company: "Infosys", title: "Gen AI, LLM Engineer", roleCategory: "LLM Engineer", location: "Hyderabad", workMode: "Not disclosed", experience: "2–5 Yrs", salary: "Not disclosed.", salaryNum: 0, postedDate: "2026-11-04", source: "Naukri", matchedSkills: ["Python", "API Integrations"], missingSkills: ["RAG", "Vector DBs", "LangGraph/CrewAI/AutoGen", "MCP", "Cloud"], whyMatches: "Hyderabad GenAI/Agentic AI role matching your target GenAI & MCP career direction.", concerns: "2–5 yrs experience and missing Agentic AI/RAG frameworks.", originalUrl: "https://www.naukri.com/job-listings-gen-ai-llm-infosys-noida-hyderabad-mumbai-all-areas-2-to-5-years-041126025514?src=companyPageJobsMob&sid=17942591583766260&xp=9&px=1", applyUrl: "https://www.naukri.com/job-listings-gen-ai-llm-infosys-noida-hyderabad-mumbai-all-areas-2-to-5-years-041126025514?src=companyPageJobsMob&sid=17942591583766260&xp=9&px=1" },
+      { id: 17, rank: 17, score: 65, company: "Razorthink", title: "Data Scientist", roleCategory: "Data Scientist", location: "Bengaluru, Hyderabad, Pune, Remote", workMode: "Remote", experience: "3–5 Yrs", salary: "Not disclosed.", salaryNum: 0, postedDate: "2026-11-13", source: "Naukri", matchedSkills: ["Data Science", "Machine Learning"], missingSkills: ["Databricks Data Platform", "3–5 yrs production DS"], whyMatches: "Fresh posting matching all 4 preferred locations and target Data Scientist role.", concerns: "3–5 yrs experience requirement vs. ~6 months formal experience.", originalUrl: "https://www.naukri.com/job-listings-data-scientist-razorthink-mumbai-delhi-ncr-bengaluru-3-to-5-years-121126915400", applyUrl: "https://www.naukri.com/job-listings-data-scientist-razorthink-mumbai-delhi-ncr-bengaluru-3-to-5-years-121126915400" },
+      { id: 18, rank: 18, score: 64, company: "Infosys", title: "Generative AI Engineer (2–5 Yrs)", roleCategory: "GenAI Engineer", location: "Hyderabad, Pune", workMode: "Not disclosed", experience: "2–5 Yrs", salary: "Not disclosed.", salaryNum: 0, postedDate: "2026-10-31", source: "Naukri", matchedSkills: ["Python", "Software Dev Fundamentals"], missingSkills: ["2+ yrs hands-on GenAI/LLM projects"], whyMatches: "Hyderabad/Pune GenAI role aligned with your target domain.", concerns: "Requires 2–6 yrs software dev and 2+ yrs GenAI experience.", originalUrl: "https://www.naukri.com/job-listings-generative-ai-2-5-yrs-infosys-hyderabad-pune-ahmedabad-2-to-5-years-311026013873", applyUrl: "https://www.naukri.com/job-listings-generative-ai-2-5-yrs-infosys-hyderabad-pune-ahmedabad-2-to-5-years-311026013873" },
+      { id: 19, rank: 19, score: 62, company: "NetM Corporate Solutions", title: "Senior Generative AI Engineer / AI Developer", roleCategory: "GenAI Engineer", location: "Hyderabad, Bengaluru", workMode: "Hybrid", experience: "3–6 Yrs", salary: "₹12–20 LPA", salaryNum: 16.0, postedDate: "2026-11-09", source: "Naukri", matchedSkills: ["Python", "REST APIs", "Backend Development"], missingSkills: ["LangChain/LlamaIndex", "RAG", "Vector DBs", "Docker", "OpenAI/Claude APIs"], whyMatches: "Hybrid Hyderabad/Bengaluru GenAI role in your target salary band (₹12–20 LPA).", concerns: "3–6 yrs experience requirement and missing RAG/Vector DB stack.", originalUrl: "https://www.naukri.com/job-listings-senior-generative-ai-engineer-ai-developer-netm-corporate-solutions-hyderabad-bengaluru-india-3-to-6-years-091126005404", applyUrl: "https://www.naukri.com/job-listings-senior-generative-ai-engineer-ai-developer-netm-corporate-solutions-hyderabad-bengaluru-india-3-to-6-years-091126005404" },
+      { id: 20, rank: 20, score: 61, company: "EazyGurus", title: "GenAI Developer", roleCategory: "GenAI Engineer", location: "Remote", workMode: "Not disclosed", experience: "2–5 Yrs", salary: "Not disclosed.", salaryNum: 0, postedDate: "2026-11-01", source: "Naukri", matchedSkills: ["APIs", "Backend Development"], missingSkills: ["OpenAI/Azure OpenAI/Anthropic", "FAISS/Pinecone", "Docker", "K8s", "Cloud"], whyMatches: "GenAI Developer role building LLM-powered chatbots and automation.", concerns: "2–5 yrs experience and missing cloud/vector DB stack.", originalUrl: "https://www.naukri.com/job-listings-311026502976", applyUrl: "https://www.naukri.com/job-listings-311026502976" },
+      { id: 21, rank: 21, score: 58, company: "Weave", title: "ML - GenAI Engineer, Voice & Speech", roleCategory: "GenAI Engineer", location: "Remote", workMode: "Remote", experience: "3+ Yrs", salary: "Not disclosed.", salaryNum: 0, postedDate: "Active", source: "Company Portal (Ashby)", matchedSkills: ["Python", "NLP", "Data Analysis & Visualization"], missingSkills: ["3+ yrs engineering", "Real-time ASR/Speech", "MCP", "Kubernetes/GKE"], whyMatches: "Remote India GenAI role at a product company with MCP and NLP focus.", concerns: "Specialized speech/ASR and Kubernetes/GCP experience missing.", originalUrl: "https://jobs.ashbyhq.com/weave/2518c1b8-3ffc-40e5-a968-c013e760c3f5", applyUrl: "https://jobs.ashbyhq.com/weave/2518c1b8-3ffc-40e5-a968-c013e760c3f5" },
+      { id: 22, rank: 22, score: 57, company: "Level AI", title: "Senior Machine Learning Engineer", roleCategory: "ML Engineer", location: "Bengaluru", workMode: "Remote", experience: "3+ Yrs", salary: "Not disclosed.", salaryNum: 0, postedDate: "Active", source: "Company Portal (Ashby)", matchedSkills: ["Python", "PyTorch", "Transformers"], missingSkills: ["3+ yrs ML/NLP", "RAG", "Agentic AI", "Docker/K8s", "Vector DBs"], whyMatches: "Remote/Bengaluru product AI role using PyTorch and Transformers for LLM agents.", concerns: "3+ yrs seniority and tier-1/production LLM deployment preference.", originalUrl: "https://jobs.ashbyhq.com/level-ai/88ae7a53-dc09-43a4-94d8-4a9f792e5926", applyUrl: "https://jobs.ashbyhq.com/level-ai/88ae7a53-dc09-43a4-94d8-4a9f792e5926" },
+      { id: 23, rank: 23, score: 56, company: "Agivant Technologies", title: "AI/ML Engineer", roleCategory: "ML Engineer", location: "Pune", workMode: "Not disclosed", experience: "2–5 Yrs (5–8 Yrs in JD)", salary: "Not disclosed.", salaryNum: 0, postedDate: "2026-10-27", source: "Naukri", matchedSkills: ["Python", "PyTorch", "Transformers", "SQL"], missingSkills: ["LangGraph/CrewAI/AutoGen", "Cloud", "5–8 yrs leadership"], whyMatches: "Pune AI/ML role using PyTorch and Transformers.", concerns: "JD body specifies 5–8 yrs experience and leading junior engineers.", originalUrl: "https://www.naukri.com/job-listings-ai-ml-engineer-agivant-technologies-pune-2-to-5-years-271026503558", applyUrl: "https://www.naukri.com/job-listings-ai-ml-engineer-agivant-technologies-pune-2-to-5-years-271026503558" },
+      { id: 24, rank: 24, score: 54, company: "Capgemini", title: "GEN AI / Agentic AI Engineer", roleCategory: "Agentic AI Engineer", location: "Bengaluru, Hyderabad, Pune", workMode: "Not disclosed", experience: "Experienced Professionals", salary: "Not disclosed.", salaryNum: 0, postedDate: "Active", source: "Company Portal (Capgemini)", matchedSkills: ["Software & AI Fundamentals"], missingSkills: ["GenAI", "Agentic AI"], whyMatches: "Multi-city Agentic AI role across all preferred Indian cities.", concerns: "Targets experienced professionals; Agentic AI not in resume.", originalUrl: "https://www.capgemini.com/in-en/jobs/469380-en_GB+sap_btp", applyUrl: "https://www.capgemini.com/in-en/jobs/469380-en_GB+sap_btp" },
+      { id: 25, rank: 25, score: 49, company: "KPI Partners", title: "GenAI Engineer", roleCategory: "GenAI Engineer", location: "Hyderabad, Bengaluru, Pune", workMode: "Not disclosed", experience: "4–8 Yrs", salary: "Not disclosed.", salaryNum: 0, postedDate: "2026-11-05", source: "Naukri", matchedSkills: ["Python", "APIs"], missingSkills: ["LLM", "RAG", "Agentic AI", "LangChain", "LangGraph", "4–8 yrs"], whyMatches: "Matches target GenAI role and preferred locations.", concerns: "4–8 yrs seniority mismatch.", originalUrl: "https://www.naukri.com/job-listings-genai-engineer-kpi-partners-hyderabad-pune-bengaluru-5-to-10-years-041126024585", applyUrl: "https://www.naukri.com/job-listings-genai-engineer-kpi-partners-hyderabad-pune-bengaluru-5-to-10-years-041126024585" }
+    ];
+    const STATUS_OPTIONS = ["New Match","Saved","Applied","Interview Scheduled","Interview Completed","Rejected","Offer"];
+    const STORAGE_KEY = "gemini_spark_statuses_2026_11_14";
+    let jobStatuses = {};
+    try { const s = localStorage.getItem(STORAGE_KEY); if (s) jobStatuses = JSON.parse(s); } catch(e) {}
+    function getStatus(id) { return jobStatuses[id] || "New Match"; }
+    function setStatus(id, st) { jobStatuses[id] = st; try { localStorage.setItem(STORAGE_KEY, JSON.stringify(jobStatuses)); } catch(e) {} render(); }
+    function getMatchBadge(score) {
+      if (score >= 90) return { label:"Excellent Match", cls:"score-excellent" };
+      if (score >= 80) return { label:"Strong Match", cls:"score-strong" };
+      if (score >= 70) return { label:"Good Match", cls:"score-good" };
+      if (score >= 60) return { label:"Potential Match", cls:"score-potential" };
+      return { label:"Low Priority", cls:"score-low" };
+    }
+    function filterAndSortJobs() {
+      const q = document.getElementById("searchInput").value.trim().toLowerCase();
+      const loc = document.getElementById("locationFilter").value;
+      const role = document.getElementById("roleFilter").value;
+      const scoreRange = document.getElementById("scoreFilter").value;
+      const mode = document.getElementById("modeFilter").value;
+      const status = document.getElementById("statusFilter").value;
+      const sortBy = document.getElementById("sortSelect").value;
+      let filtered = JOBS_DATA.filter(j => {
+        if (q && ![j.title, j.company, j.location, ...j.matchedSkills, ...j.missingSkills].join(" ").toLowerCase().includes(q)) return false;
+        if (loc !== "all") { if (loc === "Other") { if (["Hyderabad","Bengaluru","Pune","Remote"].some(k => j.location.includes(k))) return false; } else if (!j.location.includes(loc)) return false; }
+        if (role !== "all") { if (role === "Other") { if (["Data Scientist","AI Engineer","GenAI Engineer","ML Engineer","LLM Engineer","Agentic AI Engineer"].includes(j.roleCategory)) return false; } else if (j.roleCategory !== role) return false; }
+        if (scoreRange === "90-100" && j.score < 90) return false;
+        if (scoreRange === "80-89" && (j.score < 80 || j.score > 89)) return false;
+        if (scoreRange === "70-79" && (j.score < 70 || j.score > 79)) return false;
+        if (scoreRange === "below-70" && j.score >= 70) return false;
+        if (mode !== "all" && j.workMode !== mode) return false;
+        if (status !== "all" && getStatus(j.id) !== status) return false;
+        return true;
+      });
+      filtered.sort((a,b) => {
+        if (sortBy === "score-desc") return b.score - a.score || a.rank - b.rank;
+        if (sortBy === "posted-desc") return b.postedDate.localeCompare(a.postedDate);
+        if (sortBy === "company-asc") return a.company.localeCompare(b.company);
+        if (sortBy === "title-asc") return a.title.localeCompare(b.title);
+        if (sortBy === "location-asc") return a.location.localeCompare(b.location);
+        if (sortBy === "salary-desc") return b.salaryNum - a.salaryNum || b.score - a.score;
+        return a.rank - b.rank;
+      });
+      return filtered;
+    }
+    function renderBars() {
+      const sb = [{label:"90–100%",count:0,color:"#10b981"},{label:"80–89%",count:0,color:"#14b8a6"},{label:"70–79%",count:0,color:"#6366f1"},{label:"60–69%",count:0,color:"#f59e0b"},{label:"< 60%",count:0,color:"#94a3b8"}];
+      JOBS_DATA.forEach(j => { if(j.score>=90) sb[0].count++; else if(j.score>=80) sb[1].count++; else if(j.score>=70) sb[2].count++; else if(j.score>=60) sb[3].count++; else sb[4].count++; });
+      const maxS = Math.max(...sb.map(b=>b.count),1);
+      document.getElementById("scoreBars").innerHTML = sb.map(b => `<div class="bar-row"><span class="bar-label">${b.label}</span><div class="bar-track"><div class="bar-fill" style="width:${(b.count/maxS)*100}%;background:${b.color};"></div></div><span class="bar-count">${b.count}</span></div>`).join("");
+      const locs = [{label:"Bengaluru",count:0,color:"#4f46e5"},{label:"Hyderabad",count:0,color:"#0ea5e9"},{label:"Pune",count:0,color:"#10b981"},{label:"Remote",count:0,color:"#f59e0b"}];
+      JOBS_DATA.forEach(j => { if(j.location.includes("Bengaluru")) locs[0].count++; if(j.location.includes("Hyderabad")) locs[1].count++; if(j.location.includes("Pune")) locs[2].count++; if(j.location.includes("Remote")) locs[3].count++; });
+      const maxL = Math.max(...locs.map(l=>l.count),1);
+      document.getElementById("locationBars").innerHTML = locs.map(l => `<div class="bar-row"><span class="bar-label">${l.label}</span><div class="bar-track"><div class="bar-fill" style="width:${(l.count/maxL)*100}%;background:${l.color};"></div></div><span class="bar-count">${l.count}</span></div>`).join("");
+    }
+    function render() {
+      const jobs = filterAndSortJobs();
+      const container = document.getElementById("jobsContainer");
+      document.getElementById("resultsCount").textContent = `Showing ${jobs.length} of ${JOBS_DATA.length} jobs`;
+      const counts = {};
+      JOBS_DATA.forEach(j => { const s = getStatus(j.id); counts[s] = (counts[s]||0)+1; });
+      document.getElementById("statusSummary").textContent = Object.entries(counts).map(([k,v])=>`${k}: ${v}`).join(" • ");
+      if (!jobs.length) { container.innerHTML = `<div class="card" style="text-align:center;padding:36px;"><p style="font-weight:600;color:#475569;">No jobs match your current filters.</p></div>`; return; }
+      container.innerHTML = jobs.map(job => {
+        const badge = getMatchBadge(job.score);
+        const curStatus = getStatus(job.id);
+        const isTop5 = job.rank <= 5;
+        return `<article class="job-card ${isTop5?'top5':''}">
+          <div class="job-header">
+            <div><div class="badges"><span class="rank-badge">#${job.rank}</span><span class="score-badge ${badge.cls}">${job.score}% Match • ${badge.label}</span><span class="job-source">${job.source} • Posted: ${job.postedDate}</span></div><div class="job-title">${job.title}</div><div class="job-company">${job.company}</div></div>
+            <div class="job-actions"><select data-job-id="${job.id}" class="status-select">${STATUS_OPTIONS.map(opt=>`<option value="${opt}" ${opt===curStatus?'selected':''}>${opt}</option>`).join("")}</select><a href="${job.originalUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Original Listing</a><a href="${job.applyUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Apply Now →</a></div>
+          </div>
+          <div class="meta-grid"><div><span class="meta-label">Location</span><span class="meta-val">${job.location}</span></div><div><span class="meta-label">Work Mode</span><span class="meta-val">${job.workMode}</span></div><div><span class="meta-label">Experience</span><span class="meta-val">${job.experience}</span></div><div><span class="meta-label">Salary</span><span class="meta-val">${job.salary}</span></div></div>
+          <div class="skills-grid"><div class="skill-box matched"><div class="skill-box-title" style="color:#065f46;">Matched Skills</div><div class="tag-list">${job.matchedSkills.map(s=>`<span class="tag tag-green">${s}</span>`).join("")}</div></div><div class="skill-box missing"><div class="skill-box-title" style="color:#9f1239;">Missing / Gap Skills</div><div class="tag-list">${job.missingSkills.map(s=>`<span class="tag tag-red">${s}</span>`).join("")}</div></div></div>
+          <div class="notes-grid"><div><strong>Why This Matches:</strong> ${job.whyMatches}</div><div><strong>Potential Concerns:</strong> ${job.concerns}</div></div>
+        </article>`;
+      }).join("");
+      document.querySelectorAll(".status-select").forEach(sel => sel.addEventListener("change", e => setStatus(Number(e.target.dataset.jobId), e.target.value)));
+    }
+    ["searchInput","locationFilter","roleFilter","scoreFilter","modeFilter","statusFilter","sortSelect"].forEach(id => { document.getElementById(id).addEventListener("input", render); document.getElementById(id).addEventListener("change", render); });
+    document.getElementById("resetBtn").addEventListener("click", () => { document.getElementById("searchInput").value=""; document.getElementById("locationFilter").value="all"; document.getElementById("roleFilter").value="all"; document.getElementById("scoreFilter").value="all"; document.getElementById("modeFilter").value="all"; document.getElementById("statusFilter").value="all"; document.getElementById("sortSelect").value="score-desc"; render(); });
+    window.addEventListener("DOMContentLoaded", () => { renderBars(); render(); });
+  </script>
+</body>
+</html>
